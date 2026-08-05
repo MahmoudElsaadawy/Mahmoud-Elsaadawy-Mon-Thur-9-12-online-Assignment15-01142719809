@@ -1,11 +1,13 @@
-import { Request, Response, NextFunction } from "express"
+import { NextFunction, Request, Response } from "express"
+import z from "zod"
 
 export interface IError extends Error {
   statusCode: number
+  validationErrors: z.core.$ZodIssue[]
 }
 
 export class AppError extends Error {
-  constructor(message: string, options: ErrorOptions, public statusCode: number){
+  constructor(message: string, options: ErrorOptions, public statusCode: number, public validationErrors?: z.core.$ZodIssue[]){
     super(message, options)
   }
 }
@@ -22,9 +24,28 @@ export class BadRequestException extends AppError {
   }
 }
 
+export class UnauthorizedException extends AppError {
+  constructor(message: string, options: ErrorOptions = {}){
+    super(message, options, 401)
+  }
+}
+
+export class ConflictException extends AppError {
+  constructor(message: string, options: ErrorOptions = {}){
+    super(message, options, 409)
+  }
+}
+
+export class validationException extends AppError {
+  constructor(validationErrors: z.core.$ZodIssue[], options: ErrorOptions = {}){
+    super("validation error", options, 422, validationErrors)
+  }
+}
+
 export const globalErrorHandler = (err: IError, req: Request, res: Response, next: NextFunction)=> {
-  res.status(err.statusCode).json({
-    errMessage: err.message,
+  res.status(err.statusCode || 500).json({
+    Message: err.message,
+    validationError: err.validationErrors,
     status: err.statusCode,
     stack: err.stack
   })

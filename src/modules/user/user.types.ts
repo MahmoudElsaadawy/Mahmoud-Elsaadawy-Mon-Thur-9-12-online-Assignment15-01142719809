@@ -29,4 +29,6 @@ export interface IUser{
   profilePic: string
   coverPics: string[]
   bio: string
+  createdAt?:Date,
+  updatedAt?:Date,
 }
