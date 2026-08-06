@@ -1,7 +1,7 @@
 import express from "express"
 import chalk from "chalk"
 import morgan from "morgan"
-import { connectDB } from "./db/mongoose.connection"
+import { connectDB } from "./DB/mongoose.connection"
 import { globalErrorHandler, NotFoundException } from "./utils/error.exceptions"
 import authRouter from "./modules/auth/auth.controller"
 import z from "zod"

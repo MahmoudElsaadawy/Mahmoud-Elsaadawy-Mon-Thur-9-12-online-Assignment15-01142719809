@@ -1,12 +1,12 @@
 import { type Request, Response } from "express";
-import User from "../user/user.model";
+import User from "../../DB/models/user/user.model";
 import {
   ConflictException,
   BadRequestException,
   UnauthorizedException,
 } from "../../utils/error.exceptions";
 import { successResponse } from "../../utils/success.response";
-import { ProviderEnum } from "../user/user.types";
+import { ProviderEnum } from "../../DB/models/user/user.types";
 import { compare, hash } from "../../utils/security/hashing";
 import { encrypt, decrypt } from "../../utils/security/encryption";
 
