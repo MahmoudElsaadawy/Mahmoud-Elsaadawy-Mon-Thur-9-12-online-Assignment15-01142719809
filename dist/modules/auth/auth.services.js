@@ -4,10 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.loginService = exports.signupService = void 0;
-const user_model_1 = __importDefault(require("../user/user.model"));
+const user_model_1 = __importDefault(require("../../DB/models/user/user.model"));
 const error_exceptions_1 = require("../../utils/error.exceptions");
 const success_response_1 = require("../../utils/success.response");
-const user_types_1 = require("../user/user.types");
+const user_types_1 = require("../../DB/models/user/user.types");
 const hashing_1 = require("../../utils/security/hashing");
 const encryption_1 = require("../../utils/security/encryption");
 const signupService = async (req, res) => {

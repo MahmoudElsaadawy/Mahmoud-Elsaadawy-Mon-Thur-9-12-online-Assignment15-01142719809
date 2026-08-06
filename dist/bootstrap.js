@@ -7,7 +7,7 @@ exports.bootstrap = void 0;
 const express_1 = __importDefault(require("express"));
 const chalk_1 = __importDefault(require("chalk"));
 const morgan_1 = __importDefault(require("morgan"));
-const mongoose_connection_1 = require("./db/mongoose.connection");
+const mongoose_connection_1 = require("./DB/mongoose.connection");
 const error_exceptions_1 = require("./utils/error.exceptions");
 const auth_controller_1 = __importDefault(require("./modules/auth/auth.controller"));
 const bootstrap = async () => {
